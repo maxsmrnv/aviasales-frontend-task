@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Grid from './Grid';
 
 const PlaneSvg = () => {
   return (
@@ -46,36 +47,29 @@ var wordForm = function(num) {
   return forms[correct];
 };
 
-const WrapperHrz = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const WrapperVrt = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: fit-content;
-  text-align: center;
-  height: 50px;
-  align-content: end;
-`;
-
-export default function FlyLine(props) {
+export default function FlightStops(props) {
   const { stops } = props;
-  return (
-    <WrapperVrt>
+  const renderStopsCount =
+    stops > 0 ? (
       <StopsInfo>
         {stops} {wordForm(stops)}
       </StopsInfo>
-      <WrapperHrz>
+    ) : null;
+
+  return (
+    <Grid
+      style={{ height: '26px' }}
+      justifyItems={'center'}
+      alignContent={'end'}
+    >
+      {renderStopsCount}
+      <Grid autoFlow={'column'} alignItems={'center'}>
         <Line />
         <PlaneSvg />
-      </WrapperHrz>
-    </WrapperVrt>
+      </Grid>
+    </Grid>
   );
 }
-FlyLine.propTypes = {
+FlightStops.propTypes = {
   stops: PropTypes.number.isRequired
 };

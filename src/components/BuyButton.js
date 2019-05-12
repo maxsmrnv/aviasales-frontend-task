@@ -16,9 +16,10 @@ const StyledButton = styled.button`
   line-height: 22px;
   text-align: center;
   color: #ffffff;
+  cursor: pointer;
 `;
 
-export default function PriceButton(props) {
+export default function BuyButton(props) {
   const formatPrice = props.price.toString().replace(/(\w{3})$/, ' $1');
   return (
     <StyledButton>
@@ -28,6 +29,6 @@ export default function PriceButton(props) {
   );
 }
 
-PriceButton.propTypes = {
+BuyButton.propTypes = {
   price: PropTypes.number.isRequired
 };
