@@ -1,1 +1,5 @@
-@import "~normalize.css";
+@import '~normalize.css';
+
+body {
+  background-color: #f3f7fa;
+}
