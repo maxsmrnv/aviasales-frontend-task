@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Cell = styled.div`
-  grid-column: span ${props => props.W};
-  grid-row: span ${props => props.H};
+  grid-column: ${props => props.W};
+  grid-row: ${props => props.H};
   justify-self: ${props => props.justify};
   align-self: ${props => props.align};
 `;
 
 Cell.propTypes = {
-  W: PropTypes.number,
-  H: PropTypes.number,
+  W: PropTypes.string,
+  H: PropTypes.string,
   justify: PropTypes.string,
   align: PropTypes.string
 };
 
 Cell.defaultProps = {
-  W: 1,
-  H: 1,
+  W: 'span 1',
+  H: 'span 1',
   justify: 'start',
   align: 'start'
 };

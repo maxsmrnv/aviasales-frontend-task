@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 import BuyButton from './BuyButton';
 import FlightStops from './FlightStops';
@@ -12,8 +12,8 @@ const TicketWrapper = styled.div`
   background: #ffffff;
   box-shadow: 0px 1px 4px rgba(91, 137, 164, 0.25);
   border-radius: 5px;
-  width: 566px;
-  height: 161px;
+  /* width: 566px;
+  height: 161px; */
 `;
 
 const TicketButton = styled.div`
@@ -59,16 +59,16 @@ export default function Ticket(props) {
         <Vl />
         <TicketContent>
           <Grid templateCols={'repeat(6, 1fr)'} gap={'10px'}>
-            <Grid.Cell W={2}>
+            <Grid.Cell W={'span 2'}>
               <PointDetails.Time time={departure_time} />
             </Grid.Cell>
-            <Grid.Cell W={2} justify={'center'}>
+            <Grid.Cell W={'span 2'} justify={'center'}>
               <FlightStops stops={stops} />
             </Grid.Cell>
-            <Grid.Cell W={2} justify={'end'}>
+            <Grid.Cell W={'span 2'} justify={'end'}>
               <PointDetails.Time time={arrival_time} />
             </Grid.Cell>
-            <Grid.Cell W={3}>
+            <Grid.Cell W={'span 3'}>
               <PointDetails.Airport
                 isDeparture
                 code={origin}
@@ -77,7 +77,7 @@ export default function Ticket(props) {
               <br />
               <PointDetails.Day date={departure_date} />
             </Grid.Cell>
-            <Grid.Cell W={3} justify={'end'}>
+            <Grid.Cell W={'span 3'} justify={'end'}>
               <PointDetails.Airport
                 code={destination}
                 city={destination_name}

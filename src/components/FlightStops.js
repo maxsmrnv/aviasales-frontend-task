@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Grid from './Grid';
+import stopForms from '../utils/wordForms'
 
 const PlaneSvg = () => {
   return (
@@ -31,7 +32,6 @@ const Line = styled.div`
 `;
 
 const StopsInfo = styled.span`
-  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
@@ -39,20 +39,12 @@ const StopsInfo = styled.span`
   color: #8b9497;
 `;
 
-var wordForm = function(num) {
-  const cases = [2, 0, 1, 1, 1, 2];
-  const forms = ['ПЕРЕСАДКА', 'ПЕРЕСАДКИ', 'ПЕРЕСАДОК'];
-  const correct =
-    num % 100 > 4 && num % 100 < 20 ? 2 : cases[num % 10 < 5 ? num % 10 : 5];
-  return forms[correct];
-};
-
 export default function FlightStops(props) {
   const { stops } = props;
   const renderStopsCount =
     stops > 0 ? (
       <StopsInfo>
-        {stops} {wordForm(stops)}
+        {stops} {stopForms(stops)}
       </StopsInfo>
     ) : null;
 
