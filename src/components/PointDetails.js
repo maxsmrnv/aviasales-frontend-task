@@ -5,7 +5,6 @@ import ru from 'date-fns/locale/ru';
 import PropTypes from 'prop-types';
 
 const StyledTime = styled.span`
-  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
@@ -15,7 +14,6 @@ const StyledTime = styled.span`
 `;
 
 const StyledDate = styled.span`
-  font-family: 'Open Sans';
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -24,7 +22,6 @@ const StyledDate = styled.span`
 `;
 
 const StyledAirport = styled.span`
-  font-family: 'Open Sans';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
