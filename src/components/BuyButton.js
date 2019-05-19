@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  background-color: #FF8124;
+  background-color: #ff8124;
   width: 160px;
   height: 56px;
   border-radius: 5px;
@@ -19,16 +19,20 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-export default function BuyButton(props) {
-  const formatPrice = props.price.toString().replace(/(\w{3})$/, ' $1');
+export default function BuyButton({ price, sign }) {
+  const formatPrice = price.toString().replace(/(\w{3})$/, ' $1');
   return (
     <StyledButton>
       Купить <br />
-      за {formatPrice}&#8381;
+      за {formatPrice}{sign}
     </StyledButton>
   );
 }
 
 BuyButton.propTypes = {
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired,
+  sign: PropTypes.string
+};
+BuyButton.defaultProps = {
+  sign: ''
 };

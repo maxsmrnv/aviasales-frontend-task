@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
-import Grid from '../components/Grid';
-import Logo from '../components/Logo';
-import ControlPanel from './ControlPanel';
-import TicketList from './TicketsList';
-import { tickets } from '../data/tickets.json';
+import Layout from './Layout';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import reducer from '../reducers';
 
 /* eslint-disable no-underscore-dangle */
 const ext = window.__REDUX_DEVTOOLS_EXTENSION__;
 const devtoolMiddleware = ext && ext();
 /* eslint-enable */
+
+const currency = {
+  codes: {
+    RUB: { sign: '\u20BD' },
+    USD: { sign: '\u0024' },
+    EUR: { sign: '\u20AC' }
+  },
+  active: 'RUB'
+};
+
 const initialState = {
-  tickets: tickets,
-  filters: {
-    ...tickets.reduce((acc, ticket) => {
-      return { ...acc, [ticket.stops]: { stops: ticket.stops, isChecked: true } };
-    }, {})
-  }
+  currency: currency,
+  tickets: [],
+  filters: {}
 };
 /* eslint-disable no-underscore-dangle */
-const store = createStore(reducer, initialState, devtoolMiddleware);
+const store = createStore(
+  reducer,
+  initialState,
+  compose(
+    applyMiddleware(thunk),
+    devtoolMiddleware
+  )
+);
 /* eslint-enable */
-
-const LogoWrapper = styled.div`
-  margin: 50px 0 36px 0;
-`;
 
 const Container = styled.div`
   width: 1024px;
@@ -40,23 +47,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container>
-          <Grid templateCols={'repeat(12,1fr)'} gap={'0 24px'}>
-            <Grid.Cell W={'span 12'} justify={'center'}>
-              <LogoWrapper>
-                <Logo />
-              </LogoWrapper>
-            </Grid.Cell>
-            <Grid.Cell W={'2 / span 3'}>
-              <ControlPanel />
-            </Grid.Cell>
-            <Grid.Cell W={'5 / span 7'}>
-              {tickets && tickets.length && (
-                <Grid gap={'20px'}>
-                  <TicketList />
-                </Grid>
-              )}
-            </Grid.Cell>
-          </Grid>
+          <Layout />
         </Container>
       </Provider>
     );

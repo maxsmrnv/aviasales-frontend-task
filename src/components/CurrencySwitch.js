@@ -53,12 +53,13 @@ const Input = styled.input`
 
 `;
 
-function CurrencySwitch({ codes, active }) {
+function CurrencySwitch({ codes, active, setCurrency }) {
   return (
     <Styled>
-      {codes.map(code => (
+      {Object.keys(codes).map(code => (
         <React.Fragment key={code}>
           <Input
+            onChange={setCurrency(code)}
             id={code}
             type='radio'
             name='currency'

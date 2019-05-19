@@ -3,15 +3,35 @@ import { handleActions } from 'redux-actions';
 
 import * as actions from '../actions/actions';
 
-const tickets = (state = [], { type }) => {
-  switch (type) {
-    default:
-      return state;
-  }
-};
+const tickets = handleActions(
+  {
+    [actions.fetchTicketsSuccess](
+      state,
+      {
+        payload: { tickets }
+      }
+    ) {
+      return tickets;
+    }
+  },
+  {}
+);
 
 const filters = handleActions(
   {
+    [actions.fetchTicketsSuccess](
+      state,
+      {
+        payload: { tickets }
+      }
+    ) {
+      return tickets.reduce((acc, ticket) => {
+        return {
+          ...acc,
+          [ticket.stops]: { stops: ticket.stops, isChecked: true }
+        };
+      }, {});
+    },
     [actions.updateFilters](state, { payload }) {
       const newState = {
         ...state,
@@ -20,7 +40,6 @@ const filters = handleActions(
       return newState;
     },
     [actions.setAllFilters](state, { payload }) {
-      console.log(payload);
       const newState = Object.values(state).reduce((acc, filter) => {
         const newFilter = {
           [filter.stops]: { ...filter, isChecked: !payload }
@@ -43,7 +62,27 @@ const filters = handleActions(
   {}
 );
 
+const rubExchangeRate = handleActions(
+  {
+    [actions.loadRubRateSuccess](_, { payload }) {
+      return { RUB: 1, ...payload };
+    }
+  },
+  {}
+);
+
+const currency = handleActions(
+  {
+    [actions.setCurrency](state, { payload }) {
+      return { ...state, active: payload };
+    }
+  },
+  {}
+);
+
 export default combineReducers({
   tickets,
-  filters
+  filters,
+  rubExchangeRate,
+  currency
 });

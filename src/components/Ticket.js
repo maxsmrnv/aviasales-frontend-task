@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import BuyButton from './BuyButton';
 import FlightStops from './FlightStops';
@@ -44,16 +44,16 @@ export default function Ticket(props) {
     arrival_time,
     carrier,
     stops,
-    price
+    price,
+    currency: { rate, sign }
   } = props;
-
   return (
     <TicketWrapper>
       <Grid justifyItems={'center'} templateCols={'200px auto auto'}>
         <TicketButton>
           <Grid justifyItems={'center'} gap={'20px'}>
             <LogoImg src={logo[carrier]} />
-            <BuyButton price={price} />
+            {rate && <BuyButton sign={sign} price={Math.round(price * rate)} />}
           </Grid>
         </TicketButton>
         <Vl />
