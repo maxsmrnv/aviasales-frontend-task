@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import BuyButton from './BuyButton';
 import FlightStops from './FlightStops';
 import PointDetails from './PointDetails';
 import Grid from './Grid';
-import logo from '../data/CarrierLogo';
+import logo from '../static/Carriers';
 
 const TicketWrapper = styled.div`
   background: #ffffff;
@@ -24,7 +24,7 @@ const TicketContent = styled.div`
 `;
 const Vl = styled.div`
   border-left: 1px solid #eceff1;
-  height: 161px; /* Something went wrong */
+  height: 161px; 
 `;
 
 const LogoImg = styled.img`
@@ -44,16 +44,16 @@ export default function Ticket(props) {
     arrival_time,
     carrier,
     stops,
-    price
+    price,
+    currency: { rate, sign }
   } = props;
-
   return (
     <TicketWrapper>
       <Grid justifyItems={'center'} templateCols={'200px auto auto'}>
         <TicketButton>
           <Grid justifyItems={'center'} gap={'20px'}>
             <LogoImg src={logo[carrier]} />
-            <BuyButton price={price} />
+            {rate && <BuyButton sign={sign} price={Math.round(price * rate)} />}
           </Grid>
         </TicketButton>
         <Vl />

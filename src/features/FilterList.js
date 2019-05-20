@@ -25,7 +25,8 @@ const mapStateToProps = state => {
 const actionCreators = {
   updateFilters: actions.updateFilters,
   setAllFilters: actions.setAllFilters,
-  setOnlyFilters: actions.setOnlyFilters
+  setOnlyFilters: actions.setOnlyFilters,
+  fetchRates: actions.fetchRates
 };
 
 class FilterList extends React.Component {
@@ -44,6 +45,10 @@ class FilterList extends React.Component {
     e.stopPropagation();
     const { setAllFilters } = this.props;
     setAllFilters(allIsChecked);
+  };
+
+  componentDidMount = () => {
+    this.props.fetchRates();
   };
 
   render() {

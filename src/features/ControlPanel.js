@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 
 import CurrencySwitch from '../components/CurrencySwitch';
 import FilterList from './FilterList';
@@ -21,9 +23,15 @@ const Wrapper = styled.div`
   color: #4a4a4a;
 `;
 
-const currency = {
-  codes: ['RUB', 'USD', 'EUR'],
-  active: 'RUB'
+const mapStateToProps = state => {
+  const props = {
+    currency: state.currency
+  };
+  return props;
+};
+
+const actionCreators = {
+  setCurrency: actions.setCurrency
 };
 
 const Span = styled.span`
@@ -31,22 +39,32 @@ const Span = styled.span`
   margin-bottom: ${props => props.marginBottom};
 `;
 
-export default class ControlPanel extends React.Component {
+class ControlPanel extends React.Component {
+  setCurrencyHandler = code => () => {
+    const { setCurrency } = this.props;
+    setCurrency(code);
+  };
+
   render() {
+    const { currency } = this.props;
     return (
       <Wrapper>
         <Grid justifyContent={'center'}>
           <Span marginBottom={'11px'} marginTop={'15px'}>
             ВАЛЮТА
           </Span>
-          <CurrencySwitch {...currency} />
+          <CurrencySwitch setCurrency={this.setCurrencyHandler} {...currency} />
           <Span marginBottom={'10px'} marginTop={'30px'}>
             КОЛИЧЕСТВО ПЕРЕСАДОК
           </Span>
         </Grid>
         <FilterList />
-
       </Wrapper>
     );
   }
 }
+
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(ControlPanel);
