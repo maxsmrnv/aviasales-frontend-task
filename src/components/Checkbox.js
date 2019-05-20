@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import checkmark from '../static/icons/checkmark.png';
+import checkmark from '../static/radio/checkmark.png';
 import PropTypes from 'prop-types';
 
 const Styled = styled.div`

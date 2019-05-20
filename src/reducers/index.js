@@ -17,6 +17,18 @@ const tickets = handleActions(
   {}
 );
 
+const ticketsFetchingState = handleActions({
+  [actions.fetchTicketsRequest]() {
+    return 'requested';
+  },
+  [actions.fetchTicketsFailure]() {
+    return 'failed';
+  },
+  [actions.fetchTicketsSuccess]() {
+    return 'finished';
+  },
+}, 'none');
+
 const filters = handleActions(
   {
     [actions.fetchTicketsSuccess](
@@ -82,6 +94,7 @@ const currency = handleActions(
 
 export default combineReducers({
   tickets,
+  ticketsFetchingState,
   filters,
   rubExchangeRate,
   currency

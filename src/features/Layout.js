@@ -10,7 +10,10 @@ import ControlPanel from './ControlPanel';
 const LogoWrapper = styled.div`
   margin: 50px 0 36px 0;
 `;
-
+const Container = styled.div`
+  width: 1024px;
+  margin: auto;
+`;
 const actionCreators = {
   fetchTickets: actions.fetchTickets
 };
@@ -21,21 +24,23 @@ class Layout extends React.Component {
   };
   render() {
     return (
-      <Grid templateCols={'repeat(12,1fr)'} gap={'0 24px'}>
-        <Grid.Cell W={'span 12'} justify={'center'}>
-          <LogoWrapper>
-            <Logo />
-          </LogoWrapper>
-        </Grid.Cell>
-        <Grid.Cell W={'2 / span 3'}>
-          <ControlPanel />
-        </Grid.Cell>
-        <Grid.Cell W={'5 / span 7'}>
-          <Grid gap={'20px'}>
-            <TicketList />
-          </Grid>
-        </Grid.Cell>
-      </Grid>
+      <Container>
+        <Grid templateCols={'repeat(12,1fr)'} gap={'0 24px'}>
+          <Grid.Cell W={'span 12'} justify={'center'}>
+            <LogoWrapper>
+              <Logo />
+            </LogoWrapper>
+          </Grid.Cell>
+          <Grid.Cell W={'2 / span 3'}>
+            <ControlPanel />
+          </Grid.Cell>
+          <Grid.Cell W={'5 / span 7'}>
+            <Grid gap={'20px'}>
+              <TicketList />
+            </Grid>
+          </Grid.Cell>
+        </Grid>
+      </Container>
     );
   }
 }

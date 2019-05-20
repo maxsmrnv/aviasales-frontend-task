@@ -6,7 +6,7 @@ import BuyButton from './BuyButton';
 import FlightStops from './FlightStops';
 import PointDetails from './PointDetails';
 import Grid from './Grid';
-import logo from '../data/CarrierLogo';
+import logo from '../static/Carriers';
 
 const TicketWrapper = styled.div`
   background: #ffffff;
@@ -24,7 +24,7 @@ const TicketContent = styled.div`
 `;
 const Vl = styled.div`
   border-left: 1px solid #eceff1;
-  height: 161px; /* Something went wrong */
+  height: 161px; 
 `;
 
 const LogoImg = styled.img`

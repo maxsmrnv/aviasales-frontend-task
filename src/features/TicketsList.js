@@ -8,6 +8,7 @@ const sortTicketsAsc = ({ price }, { price: next }) =>
 const mapStateToProps = state => {
   const props = {
     tickets: state.tickets,
+    ticketsFetchingState: state.ticketsFetchingState,
     filters: state.filters,
     rubExchangeRate: state.rubExchangeRate,
     currency: state.currency
@@ -17,17 +18,32 @@ const mapStateToProps = state => {
 
 class TicketsList extends React.Component {
   render() {
-    const { tickets, filters, rubExchangeRate, currency } = this.props;
+    const {
+      ticketsFetchingState,
+      tickets,
+      filters,
+      rubExchangeRate,
+      currency
+    } = this.props;
 
     const sign = currency.codes[currency.active];
     const rate = rubExchangeRate[currency.active];
 
-    return tickets
-      .filter(({ stops }) => filters[stops].isChecked)
-      .sort(sortTicketsAsc)
-      .map((ticket, i) => (
-        <Ticket key={i} currency={{ rate: rate, ...sign }} {...ticket} />
-      ));
+    return (
+      <>
+        {ticketsFetchingState === 'failed' && (
+          <p>Something went wrong please try later...</p>
+        )}
+        {ticketsFetchingState === 'requested' && <p>Loading...</p>}
+        {ticketsFetchingState === 'finished' &&
+          tickets
+            .filter(({ stops }) => filters[stops].isChecked)
+            .sort(sortTicketsAsc)
+            .map((ticket, i) => (
+              <Ticket key={i} currency={{ rate: rate, ...sign }} {...ticket} />
+            ))}
+      </>
+    );
   }
 }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import styled from 'styled-components';
 import Layout from './Layout';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -37,18 +36,13 @@ const store = createStore(
 );
 /* eslint-enable */
 
-const Container = styled.div`
-  width: 1024px;
-  margin: auto;
-`;
+
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Container>
           <Layout />
-        </Container>
       </Provider>
     );
   }
