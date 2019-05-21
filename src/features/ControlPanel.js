@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
+import React from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import * as actions from '../actions/actions'
 
-import CurrencySwitch from '../components/CurrencySwitch';
-import FilterList from './FilterList';
-import Grid from '../components/Grid';
+import CurrencySwitch from '../components/CurrencySwitch'
+import FilterList from './FilterList'
+import Grid from '../components/Grid'
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -21,32 +21,32 @@ const Wrapper = styled.div`
   letter-spacing: 0.5px;
 
   color: #4a4a4a;
-`;
+`
 
 const mapStateToProps = state => {
   const props = {
-    currency: state.currency
-  };
-  return props;
-};
+    currency: state.currency,
+  }
+  return props
+}
 
 const actionCreators = {
-  setCurrency: actions.setCurrency
-};
+  setCurrency: actions.setCurrency,
+}
 
 const Span = styled.span`
   margin-top: ${props => props.marginTop};
   margin-bottom: ${props => props.marginBottom};
-`;
+`
 
 class ControlPanel extends React.Component {
   setCurrencyHandler = code => () => {
-    const { setCurrency } = this.props;
-    setCurrency(code);
-  };
+    const { setCurrency } = this.props
+    setCurrency(code)
+  }
 
   render() {
-    const { currency } = this.props;
+    const { currency } = this.props
     return (
       <Wrapper>
         <Grid justifyContent={'center'}>
@@ -60,11 +60,11 @@ class ControlPanel extends React.Component {
         </Grid>
         <FilterList />
       </Wrapper>
-    );
+    )
   }
 }
 
 export default connect(
   mapStateToProps,
   actionCreators
-)(ControlPanel);
+)(ControlPanel)

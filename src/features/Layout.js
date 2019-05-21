@@ -1,27 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
-import Logo from '../components/Logo';
-import Grid from '../components/Grid';
-import * as actions from '../actions/actions';
-import { connect } from 'react-redux';
-import TicketList from './TicketsList';
-import ControlPanel from './ControlPanel';
+import React from 'react'
+import styled from 'styled-components'
+import Logo from '../components/Logo'
+import Grid from '../components/Grid'
+import * as actions from '../actions/actions'
+import { connect } from 'react-redux'
+import TicketList from './TicketsList'
+import ControlPanel from './ControlPanel'
 
 const LogoWrapper = styled.div`
   margin: 50px 0 36px 0;
-`;
+`
 const Container = styled.div`
   width: 1024px;
   margin: auto;
-`;
+`
 const actionCreators = {
-  fetchTickets: actions.fetchTickets
-};
+  fetchTickets: actions.fetchTickets,
+}
 
 class Layout extends React.Component {
   componentWillMount = () => {
-    this.props.fetchTickets();
-  };
+    this.props.fetchTickets()
+  }
   render() {
     return (
       <Container>
@@ -41,11 +41,11 @@ class Layout extends React.Component {
           </Grid.Cell>
         </Grid>
       </Container>
-    );
+    )
   }
 }
 
 export default connect(
   null,
   actionCreators
-)(Layout);
+)(Layout)

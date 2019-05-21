@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Cell = styled.div`
   grid-column: ${props => props.W};
   grid-row: ${props => props.H};
   justify-self: ${props => props.justify};
   align-self: ${props => props.align};
-`;
+`
 
 Cell.propTypes = {
   W: PropTypes.string,
   H: PropTypes.string,
   justify: PropTypes.string,
-  align: PropTypes.string
-};
+  align: PropTypes.string,
+}
 
 Cell.defaultProps = {
   W: 'span 1',
   H: 'span 1',
   justify: 'start',
-  align: 'start'
-};
+  align: 'start',
+}
 
 const GridWrapper = styled.div`
   display: ${props => props.display};
@@ -33,14 +33,16 @@ const GridWrapper = styled.div`
   grid-template-rows: ${props => props.templateRows};
   grid-gap: ${props => props.gap};
   grid-auto-flow: ${props => props.autoFlow};
-`;
+`
 
 export default class Grid extends Component {
-  static Cell = Cell;
+  static Cell = Cell
   render() {
-    return <GridWrapper {...this.props}>{this.props.children}</GridWrapper>;
+    return <GridWrapper {...this.props}>{this.props.children}</GridWrapper>
   }
 }
+
+Grid.propTypes = { children: PropTypes.any }
 
 GridWrapper.defaultProps = {
   display: 'grid',
@@ -51,8 +53,8 @@ GridWrapper.defaultProps = {
   templateCols: 'auto',
   templateRows: 'auto',
   gap: 'unset',
-  autoFlow: 'row'
-};
+  autoFlow: 'row',
+}
 
 GridWrapper.propTypes = {
   display: PropTypes.string,
@@ -63,5 +65,5 @@ GridWrapper.propTypes = {
   templateCols: PropTypes.string,
   templateRows: PropTypes.string,
   gap: PropTypes.string,
-  autoFlow: PropTypes.string
-};
+  autoFlow: PropTypes.string,
+}

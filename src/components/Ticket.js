@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-import BuyButton from './BuyButton';
-import FlightStops from './FlightStops';
-import PointDetails from './PointDetails';
-import Grid from './Grid';
-import logo from '../static/Carriers';
+import BuyButton from './BuyButton'
+import FlightStops from './FlightStops'
+import PointDetails from './PointDetails'
+import Grid from './Grid'
+import logo from '../static/Carriers'
 
 const TicketWrapper = styled.div`
   background: #ffffff;
@@ -14,23 +14,23 @@ const TicketWrapper = styled.div`
   border-radius: 5px;
   /* width: 566px;
   height: 161px; */
-`;
+`
 
 const TicketButton = styled.div`
   padding-top: 25px;
-`;
+`
 const TicketContent = styled.div`
   padding: 26px;
-`;
+`
 const Vl = styled.div`
   border-left: 1px solid #eceff1;
-  height: 161px; 
-`;
+  height: 161px;
+`
 
 const LogoImg = styled.img`
   /* width: 120px; */
   height: 35px;
-`;
+`
 
 export default function Ticket(props) {
   const {
@@ -45,8 +45,8 @@ export default function Ticket(props) {
     carrier,
     stops,
     price,
-    currency: { rate, sign }
-  } = props;
+    currency: { rate, sign },
+  } = props
   return (
     <TicketWrapper>
       <Grid justifyItems={'center'} templateCols={'200px auto auto'}>
@@ -89,7 +89,7 @@ export default function Ticket(props) {
         </TicketContent>
       </Grid>
     </TicketWrapper>
-  );
+  )
 }
 
 Ticket.propTypes = {
@@ -103,5 +103,5 @@ Ticket.propTypes = {
   arrivalTime: PropTypes.string,
   carrier: PropTypes.string,
   stops: PropTypes.number,
-  price: PropTypes.number
-};
+  price: PropTypes.number,
+}

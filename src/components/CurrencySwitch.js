@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Styled = styled.div`
   font-style: normal;
@@ -9,7 +9,7 @@ const Styled = styled.div`
   line-height: 22px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-`;
+`
 
 const Input = styled.input`
 
@@ -51,7 +51,7 @@ const Input = styled.input`
     color: #ffffff;
   }
 
-`;
+`
 
 function CurrencySwitch({ codes, active, setCurrency }) {
   return (
@@ -61,8 +61,8 @@ function CurrencySwitch({ codes, active, setCurrency }) {
           <Input
             onChange={setCurrency(code)}
             id={code}
-            type='radio'
-            name='currency'
+            type="radio"
+            name="currency"
             value={code}
             defaultChecked={code === active}
           />
@@ -70,7 +70,13 @@ function CurrencySwitch({ codes, active, setCurrency }) {
         </React.Fragment>
       ))}
     </Styled>
-  );
+  )
 }
 
-export default CurrencySwitch;
+export default CurrencySwitch
+
+CurrencySwitch.propTypes = {
+  codes: PropTypes.object,
+  active: PropTypes.string,
+  setCurrency: PropTypes.string,
+}
