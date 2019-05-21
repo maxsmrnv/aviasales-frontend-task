@@ -1,4 +1,5 @@
 # [Aviasales (frontend task)](https://github.com/KosyanMedia/test-tasks/tree/master/aviasales)
+## Demo - https://avia.maxsmrnv.now.sh/
 
 - [x] Рендеринг билетов с данными сортированными по цене из файла tickets.json.
 - [x] Фильтрация билетов в выдаче по количеству пересадок.
