@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import stopForms from '../utils/wordForms';
+import React from 'react'
+import styled from 'styled-components'
+import stopForms from '../utils/wordForms'
 
 const Wrapper = styled.div`
   font-style: normal;
@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   font-size: 13px;
 
   color: #4a4a4a;
-
   cursor: pointer;
   user-select: none;
   display: grid;
@@ -16,7 +15,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   width: 100%;
-  height: 36px;
+  height: 36px
   &:hover {
     background-color: #f1fcff;
   }
@@ -29,22 +28,22 @@ const Wrapper = styled.div`
     display: block;
     color: #ff8124;
   }
-`;
+`
 
 const StyledStopTitle = styled.span`
   justify-self: start;
-`;
+`
 
 const stopsFormExtended = stopsCount => {
   switch (true) {
     case stopsCount === 0:
-      return 'Без пересадок';
+      return 'Без пересадок'
     case stopsCount === -1:
-      return 'Все';
+      return 'Все'
     default:
-      return `${stopsCount} ${stopForms(stopsCount).toLowerCase()}`;
+      return `${stopsCount} ${stopForms(stopsCount).toLowerCase()}`
   }
-};
+}
 
 function StopsFilter({ stopsCount, checkbox, button, updateFilters }) {
   return (
@@ -53,7 +52,7 @@ function StopsFilter({ stopsCount, checkbox, button, updateFilters }) {
       <StyledStopTitle>{stopsFormExtended(stopsCount)}</StyledStopTitle>
       {button}
     </Wrapper>
-  );
+  )
 }
 
-export default StopsFilter;
+export default StopsFilter

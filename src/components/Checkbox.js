@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import checkmark from '../static/radio/checkmark.png';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled from 'styled-components'
+import checkmark from '../static/radio/checkmark.png'
+import PropTypes from 'prop-types'
 
 const Styled = styled.div`
   input {
@@ -24,22 +24,22 @@ const Styled = styled.div`
     border: 1px solid #2196f3;
     background-color: #f2fcff;
   }
-`;
+`
 
 function Checkbox({ isChecked }) {
   return (
     <Styled>
-      <input onChange={()=>{}} type='checkbox' checked={isChecked} />
+      <input onChange={() => {}} type="checkbox" checked={isChecked} />
       <label />
     </Styled>
-  );
+  )
 }
 
-export default Checkbox;
+export default Checkbox
 
-Checkbox.propsTypes = {
-  isChecked: PropTypes.bool
-};
+Checkbox.propTypes = {
+  isChecked: PropTypes.bool,
+}
 Checkbox.defaultProps = {
-  isChecked: false
-};
+  isChecked: false,
+}

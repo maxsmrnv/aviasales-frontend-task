@@ -24,7 +24,8 @@ export default function BuyButton({ price, sign }) {
   return (
     <StyledButton>
       Купить <br />
-      за {formatPrice}{sign}
+      за {formatPrice}
+      {sign}
     </StyledButton>
   );
 }
