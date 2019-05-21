@@ -1,9 +1,9 @@
-import React from 'react';
-import Ticket from '../components/Ticket';
-import { connect } from 'react-redux';
+import React from 'react'
+import Ticket from '../components/Ticket'
+import { connect } from 'react-redux'
 
 const sortTicketsAsc = ({ price }, { price: next }) =>
-  parseFloat(price) - parseFloat(next);
+  parseFloat(price) - parseFloat(next)
 
 const mapStateToProps = state => {
   const props = {
@@ -11,10 +11,10 @@ const mapStateToProps = state => {
     ticketsFetchingState: state.ticketsFetchingState,
     filters: state.filters,
     rubExchangeRate: state.rubExchangeRate,
-    currency: state.currency
-  };
-  return props;
-};
+    currency: state.currency,
+  }
+  return props
+}
 
 class TicketsList extends React.Component {
   render() {
@@ -23,11 +23,11 @@ class TicketsList extends React.Component {
       tickets,
       filters,
       rubExchangeRate,
-      currency
-    } = this.props;
+      currency,
+    } = this.props
 
-    const sign = currency.codes[currency.active];
-    const rate = rubExchangeRate[currency.active];
+    const sign = currency.codes[currency.active]
+    const rate = rubExchangeRate[currency.active]
 
     return (
       <>
@@ -43,8 +43,8 @@ class TicketsList extends React.Component {
               <Ticket key={i} currency={{ rate: rate, ...sign }} {...ticket} />
             ))}
       </>
-    );
+    )
   }
 }
 
-export default connect(mapStateToProps)(TicketsList);
+export default connect(mapStateToProps)(TicketsList)

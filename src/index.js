@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './style.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './style.css'
 
-import App from './features/App';
+import App from './features/App'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))
