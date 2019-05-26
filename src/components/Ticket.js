@@ -49,7 +49,7 @@ export default function Ticket(props) {
   return (
     <TicketWrapper>
       <Grid justifyItems={'center'} templateCols={'auto auto'}>
-        <Grid.Cell s-W={'span 2'} m-W={'span 2'} justify={'center'}>
+        <Grid.Cell s-W={'span 2'} m-W={'span 1'} justify={'center'}>
           <TicketButton>
             <Grid justifyItems={'center'} gap={'20px'}>
               <LogoImg src={logo[carrier]} />
@@ -59,7 +59,7 @@ export default function Ticket(props) {
             </Grid>
           </TicketButton>
         </Grid.Cell>
-        <Grid.Cell s-W={'span 2'} m-W={'span 2'} justify={'center'}>
+        <Grid.Cell s-W={'span 2'} m-W={'span 1'} justify={'center'}>
           <TicketContent>
             <Grid templateCols={'repeat(6, 1fr)'} gap={'10px'}>
               <Grid.Cell W={'span 2'} m-W={'span 2'} s-W={'span 2'}>
