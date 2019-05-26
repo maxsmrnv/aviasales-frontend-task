@@ -11,8 +11,6 @@ const LogoWrapper = styled.div`
   margin: 50px 0 36px 0;
 `
 
-const responsiveCell = styled(Grid.Cell)``
-
 const actionCreators = {
   fetchTickets: actions.fetchTickets,
 }
