@@ -17,14 +17,13 @@ const TicketWrapper = styled.div`
 `
 
 const TicketButton = styled.div`
-  padding-top: 25px;
+  padding: 25px;
+  @media (min-width: 992px) {
+    border-right: 1px solid #eceff1;
+  }
 `
 const TicketContent = styled.div`
-  padding: 26px;
-`
-const Vl = styled.div`
-  border-left: 1px solid #eceff1;
-  height: 161px;
+  padding: 25px;
 `
 
 const LogoImg = styled.img`
@@ -49,44 +48,59 @@ export default function Ticket(props) {
   } = props
   return (
     <TicketWrapper>
-      <Grid justifyItems={'center'} templateCols={'200px auto auto'}>
-        <TicketButton>
-          <Grid justifyItems={'center'} gap={'20px'}>
-            <LogoImg src={logo[carrier]} />
-            {rate && <BuyButton sign={sign} price={Math.round(price * rate)} />}
-          </Grid>
-        </TicketButton>
-        <Vl />
-        <TicketContent>
-          <Grid templateCols={'repeat(6, 1fr)'} gap={'10px'}>
-            <Grid.Cell W={'span 2'}>
-              <PointDetails.Time time={departure_time} />
-            </Grid.Cell>
-            <Grid.Cell W={'span 2'} justify={'center'}>
-              <FlightStops stops={stops} />
-            </Grid.Cell>
-            <Grid.Cell W={'span 2'} justify={'end'}>
-              <PointDetails.Time time={arrival_time} />
-            </Grid.Cell>
-            <Grid.Cell W={'span 3'}>
-              <PointDetails.Airport
-                isDeparture
-                code={origin}
-                city={origin_name}
-              />
-              <br />
-              <PointDetails.Day date={departure_date} />
-            </Grid.Cell>
-            <Grid.Cell W={'span 3'} justify={'end'}>
-              <PointDetails.Airport
-                code={destination}
-                city={destination_name}
-              />
-              <br />
-              <PointDetails.Day date={arrival_date} />
-            </Grid.Cell>
-          </Grid>
-        </TicketContent>
+      <Grid justifyItems={'center'} templateCols={'auto auto'}>
+        <Grid.Cell s-W={'span 2'} m-W={'span 2'} justify={'center'}>
+          <TicketButton>
+            <Grid justifyItems={'center'} gap={'20px'}>
+              <LogoImg src={logo[carrier]} />
+              {rate && (
+                <BuyButton sign={sign} price={Math.round(price * rate)} />
+              )}
+            </Grid>
+          </TicketButton>
+        </Grid.Cell>
+        <Grid.Cell s-W={'span 2'} m-W={'span 2'} justify={'center'}>
+          <TicketContent>
+            <Grid templateCols={'repeat(6, 1fr)'} gap={'10px'}>
+              <Grid.Cell W={'span 2'} m-W={'span 2'} s-W={'span 2'}>
+                <PointDetails.Time time={departure_time} />
+              </Grid.Cell>
+              <Grid.Cell
+                W={'span 2'}
+                m-W={'span 2'}
+                s-W={'span 2'}
+                justify={'center'}
+              >
+                <FlightStops stops={stops} />
+              </Grid.Cell>
+              <Grid.Cell
+                W={'span 2'}
+                m-W={'span 2'}
+                s-W={'span 2'}
+                justify={'end'}
+              >
+                <PointDetails.Time time={arrival_time} />
+              </Grid.Cell>
+              <Grid.Cell W={'span 3'} m-W={'span 3'} s-W={'span 3'}>
+                <PointDetails.Airport
+                  isDeparture
+                  code={origin}
+                  city={origin_name}
+                />
+                <br />
+                <PointDetails.Day date={departure_date} />
+              </Grid.Cell>
+              <Grid.Cell W={'span 3'} s-W={'span 3'} justify={'end'}>
+                <PointDetails.Airport
+                  code={destination}
+                  city={destination_name}
+                />
+                <br />
+                <PointDetails.Day date={arrival_date} />
+              </Grid.Cell>
+            </Grid>
+          </TicketContent>
+        </Grid.Cell>
       </Grid>
     </TicketWrapper>
   )
