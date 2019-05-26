@@ -26,9 +26,15 @@ const PlaneSvg = () => {
 
 const Line = styled.div`
   width: 95px;
+  display: none;
   border-top: 1px solid #d2d5d6;
-  display: inline-block;
   margin-right: 1px;
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+  @media (min-width: 992px) {
+    display: inline-block;
+  }
 `
 
 const StopsInfo = styled.span`

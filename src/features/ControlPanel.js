@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   border-radius: 5px;
   width: 232px;
   padding-bottom: 24px;
+  margin-bottom: 24px;
 
   font-style: normal;
   font-weight: 600;

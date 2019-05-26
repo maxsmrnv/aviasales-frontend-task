@@ -2,11 +2,33 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const Container = styled.div`
+  width: 308px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+  @media (min-width: 992px) {
+    width: 1024px;
+  }
+`
+
 const Cell = styled.div`
-  grid-column: ${props => props.W};
-  grid-row: ${props => props.H};
   justify-self: ${props => props.justify};
   align-self: ${props => props.align};
+  grid-column: ${props => props['s-W']};
+  grid-row: ${props => props['s-H']};
+
+  @media (min-width: 768px) {
+    grid-column: ${props => props['m-W']};
+    grid-row: ${props => props['m-H']};
+  }
+  @media (min-width: 992px) {
+    grid-column: ${props => props.W};
+    grid-row: ${props => props.H};
+  }
 `
 
 Cell.propTypes = {
@@ -37,6 +59,7 @@ const GridWrapper = styled.div`
 
 export default class Grid extends Component {
   static Cell = Cell
+  static Container = Container
   render() {
     return <GridWrapper {...this.props}>{this.props.children}</GridWrapper>
   }

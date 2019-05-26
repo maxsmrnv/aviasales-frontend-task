@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-items: center;
   width: 100%;
-  height: 36px
+  height: 36px;
   &:hover {
     background-color: #f1fcff;
   }
